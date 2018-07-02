@@ -4,18 +4,18 @@ describe('Events', () => {
   it('Should find "update-cart" event', () => {
     document.body.innerHTML = `
       <div data-findify-event="update-cart">
-        <div data-findify-item-id="PRODUCT_ID_1" data-findify-variant-item-id="VARIANT_ID_1" data-findify-unit-price="1" data-findify-quantity="1" />
-        <div data-findify-item-id="PRODUCT_ID_2" data-findify-variant-item-id="VARIANT_ID_2" data-findify-unit-price="2" data-findify-quantity="2" />
+        <div data-findify-item-id="PRODUCT_ID_1" data-findify-variant-item-id="VARIANT_ID_1" data-findify-unit-price="1" data-findify-quantity="1"></div>
+        <div data-findify-item-id="PRODUCT_ID_2" data-findify-variant-item-id="VARIANT_ID_2" data-findify-unit-price="2" data-findify-quantity="2"></div>
       </div>
     `
     const founded = getEventsOnPage(document);
     expect(founded).toEqual(
       {
         "update-cart": {
-          "item_id": "PRODUCT_ID_1",
-          "quantity": "1",
-          "unit_price": "1",
-          "variant_item_id": "VARIANT_ID_1"
+          "line_items": [
+            {"item_id": "PRODUCT_ID_1", "quantity": "1", "unit_price": "1", "variant_item_id": "VARIANT_ID_1"},
+            {"item_id": "PRODUCT_ID_2", "quantity": "2", "unit_price": "2", "variant_item_id": "VARIANT_ID_2"}
+          ],
         }
       }
     );
