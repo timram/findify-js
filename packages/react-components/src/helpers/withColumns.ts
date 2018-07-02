@@ -14,7 +14,7 @@ const defaultColumnsMapper = (width, props?) => {
   if (width > 1000) return 4;
   if (width > 800) return 4;
   if (width > 600) return 4;
-  if (width > 400) return 6;
+  if (width > 300) return 6;
   return 12;
 };
 

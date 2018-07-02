@@ -12,11 +12,11 @@ export const getPayload = (config, { events, filters }) => {
   const type = config.get('type');
   const slot = config.get('slot');
   const multipleIds = config.get('multipleIds');
-
+  
   const payload: any = { slot, type };
-
+  
   if (filters && !!filters.length) {
-    payload.filters = filters;
+    payload.rules = filters;
   }
 
   if (['bought', 'viewed'].includes(type)) {
